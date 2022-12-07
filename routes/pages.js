@@ -1,7 +1,13 @@
+/* import modules */
 const express = require("express");
 
+/* import controller */
+const pagesController = require("../controlls/pages");
+
+/* create router */
 const router = express.Router();
 
+/* set routers */
 router.get("/", function (req, res) {
   res.render("index", { title: "Furtore Store Home" });
 });
@@ -15,14 +21,8 @@ router.get("/about", (re1, res) => {
 router.get("/contact", (req, res) => {
   res.status(200).render("contact", {
     pageName: "contact",
-    title: "Contact U with Us - Furtore",
+    title: "Contact Us - Furtore",
   });
-});
-
-router.get("login", (req, res) => {
-  res
-    .status(200)
-    .render("login", { pageName: "login", title: "User Login - Furtore" });
 });
 
 module.exports = router;

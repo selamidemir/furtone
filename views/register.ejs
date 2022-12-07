@@ -1,0 +1,69 @@
+<%- include("./partials/page_top.ejs") %> <%-
+include("./partials/page_header.ejs") %>
+<div class="login_section layout_padding">
+  <div class="container d-flex justify-content-center">
+    <div class="m-5 p-5">
+      <h2>User Register</h2>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="mail_text mt-1"
+            id="name"
+            name="name"
+            aria-describedby="nameHelp"
+            required
+          />
+          <small id="nameHelp" class="form-text text-muted"
+            >Enter your name.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            class="mail_text mt-1"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            required
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="mail_text mt-1"
+            id="password"
+            name="password"
+            aria-describedby="passwordHelp"
+            required
+          />
+          <small id="passwordHelp" class="form-text text-muted"
+              >Enter your password.</small
+            >
+        </div>
+        <div class="form-group">
+          <label for="password-confirm">Password</label>
+          <input
+            type="password"
+            class="mail_text mt-1 mb-2"
+            id="password-confirm"
+            name="password-confirm"
+            aria-describedby="password-confirmHelp"
+            required
+          />
+          <small id="password-confirmHelp" class="form-text text-muted"
+            >Enter your password again.</small
+          >
+        </div>
+        <button type="submit" class="btn send_bt">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("./partials/page_footer.ejs") %>

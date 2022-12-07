@@ -1,0 +1,28 @@
+<%- include("./partials/page_top.ejs") %>
+<%- include("./partials/page_header.ejs") %>
+<div class="login_section layout_padding">
+    <div class="container d-flex justify-content-center">
+        <div class="m-5 p-5">
+            <h2>User Login</h2>
+            <form action="/users/login" method="POST">
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" class="mail_text mt-1" id="email" name="email" aria-describedby="emailHelp" required />
+                  <small id="emailHelp" class="form-text text-muted">Enter your email adress..</small>
+                </div>
+                <div class="form-group mb-2">
+                  <label for="password">Password</label>
+                  <input type="password" class="mail_text mt-1" id="password" name="password" required />
+                  <small id="passwordHelp" class="form-text text-muted">Enter your password</small>
+                </div>
+                <div class="form-group form-check mt-1">
+                  <input type="checkbox" class="form-check-input" id="remember">
+                  <label class="form-check-label" for="checkOutMe">Remember</label>
+                </div>
+                <div class="form-text text-muted text-danger mb-2"><%= error %></div>
+                <button type="submit" class="btn send_bt">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+<%- include("./partials/page_footer.ejs") %>
