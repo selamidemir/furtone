@@ -11,6 +11,8 @@ const dotenv = require("dotenv");
 const pagesRouter = require("./routes/pages");
 const usersRouter = require("./routes/users");
 const furnitureRouter = require("./routes/furniture");
+const adminRouter = require("./routes/admin");
+const { UserTypes } = require("./assets/userTypes");
 
 const app = express();
 
@@ -41,20 +43,24 @@ app.use(
 
 app.use(function (req, res, next) {
   if (req.session.user) {
-    res.locals.user = req.session.user;
-    res.locals.userIN = req.session.user._id;
+    const userInfo = {
+      id: req.session.user._id,
+      name: req.session.user.name,
+      email: req.session.user.email,
+      slug: req.session.user.slug,
+      userType: req.session.user.userType,
+    };
+    res.locals.user = userInfo;
+    res.locals.userIN = true;
+    if (req.session.user.userType === UserTypes.admin) res.locals.admin = true;
+    else res.locals.admin = false;
   } else {
     res.locals.user = null;
     res.locals.userIN = null;
+    res.locals.admin = false;
   }
   next();
 });
-
-// app.use("*", (req, res, next) => {
-//   console.log("çalıştı bir şeyler")
-//   global.userIN = req.session.user;
-//   next();
-// });
 
 mongoose.set("strictQuery", false);
 mongoose
@@ -70,6 +76,7 @@ mongoose
 app.use("/", pagesRouter);
 app.use("/users", usersRouter);
 app.use("/furnitures", furnitureRouter);
+app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

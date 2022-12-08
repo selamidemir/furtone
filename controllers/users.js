@@ -34,13 +34,26 @@ exports.login = async (req, res) => {
     /* şifreleri kontrol et */
     bcyrpt.compare(password, hashPassword, (err, result) => {
       if (result) {
+        const userInfo = {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          slug: user.slug,
+          userType: user.userType,
+        };
         req.session.user = user;
-        userIN = user._id;
+        res.locals.user = userInfo;
+        res.locals.userIN = true;
+        if (req.session.user.userType === UserTypes.admin)
+          res.locals.admin = true;
+        else res.locals.admin = false;
         res.status(200).redirect("/");
       } else {
         const error = "The user was not found.";
         req.session.user = null;
-        global.userIN = null;
+        res.locals.user = null;
+        res.locals.userIN = false;
+        res.locals.admin = false;
         res.status(400).render("login", {
           pageName: "login",
           title: "User Login - Furtore",
@@ -60,12 +73,11 @@ exports.login = async (req, res) => {
 
 /* user logout */
 exports.logout = (req, res) => {
-  console.log("çıkış yapıldı", res.locals.user, res.locals.userIN)
   res.locals.userIN = null;
   req.session.user = null;
   res.locals.user = null;
-  res.status(200).redirect("/")
-}
+  res.status(200).redirect("/");
+};
 
 /* register user */
 exports.register = async (req, res) => {
@@ -88,7 +100,7 @@ exports.register = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        userType: UserTypes.user
+        userType: UserTypes.user,
       };
       await User.create(userInfo, (err) => {
         /* Üye oluşturulamadı bir hata var */
