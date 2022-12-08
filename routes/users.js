@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const userController = require('../controlls/users');
+const userController = require("../controllers/users");
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get("/", function (req, res, next) {
+  res.send("respond with a resource");
 });
 
 /* login user form */
@@ -18,9 +18,9 @@ router.get("/logout", userController.logout);
 router.get("/register", userController.registerForm);
 
 /* POST login user form */
-router.post('/login', userController.login);
+router.post("/login", userController.login);
 
 /* POST login user form */
-router.post('/register', userController.register);
+router.post("/register", userController.register);
 
 module.exports = router;

@@ -2,7 +2,7 @@
 const express = require("express");
 
 /* import controller */
-const pagesController = require("../controlls/pages");
+const pagesController = require("../controllers/pages");
 
 /* create router */
 const router = express.Router();

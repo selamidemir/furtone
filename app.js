@@ -7,8 +7,10 @@ const MongoStore = require("connect-mongo");
 const session = require("express-session");
 const dotenv = require("dotenv");
 
+/* add routes */
 const pagesRouter = require("./routes/pages");
 const usersRouter = require("./routes/users");
+const furnitureRouter = require("./routes/furniture");
 
 const app = express();
 
@@ -67,6 +69,7 @@ mongoose
 
 app.use("/", pagesRouter);
 app.use("/users", usersRouter);
+app.use("/furnitures", furnitureRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

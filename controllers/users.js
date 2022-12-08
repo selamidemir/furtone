@@ -1,5 +1,6 @@
 /* import modules */
 const bcyrpt = require("bcrypt");
+const { UserTypes } = require("../assets/userTypes");
 const User = require("../models/User");
 
 /* user login form */
@@ -87,6 +88,7 @@ exports.register = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        userType: UserTypes.user
       };
       await User.create(userInfo, (err) => {
         /* Üye oluşturulamadı bir hata var */
