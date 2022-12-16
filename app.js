@@ -5,6 +5,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
+const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
 /* add routes */
@@ -29,6 +30,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(fileUpload());
 app.use(
   session({
     secret: process.env.APP_SESSION_SECRET_KEY,

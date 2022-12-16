@@ -65,8 +65,8 @@ exports.login = async (req, res) => {
     /* Beklenmeyen hata oluştu */
     res.status(500).render("wrong", {
       pageName: "wrong",
-      title: "Somethings Goes Wrong! - Furtore",
-      error: "Somethings Goes Wrong!",
+      title: "Something Goes Wrong! - Furtore",
+      error: "Something Goes Wrong!",
     });
   }
 };

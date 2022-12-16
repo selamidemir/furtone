@@ -872,7 +872,7 @@ textarea#comment::placeholder {
     float: left;
 }
 
-.send_bt a {
+.send_bt button {
     width: 100%;
     text-align: center;
     font-size: 18px;

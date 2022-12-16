@@ -1,5 +1,9 @@
 /* admin controller */
 
+/* import modules */
+
+const Furniture = require("../models/Furniture");
+
 /* list furnitures */
 exports.listFurnitures = async (req, res) => {
 
@@ -7,6 +11,7 @@ exports.listFurnitures = async (req, res) => {
 
 /* add a new furniture */
 exports.addFurniture = async (req, res) => {
+    res.send(req.body.name)
 
 }
 
