@@ -1052,3 +1052,7 @@ textarea#comment::placeholder {
 .margin_top90 {
     margin-top: 90px;
 }
+
+.furniture_image {
+    height: 233px;
+}

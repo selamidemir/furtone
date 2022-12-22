@@ -2,13 +2,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="mail_section map_form_container">
-        <form action="/admin/furnitures" method="POST">
+        <form action="/admin/furnitures" method="POST" enctype="multipart/form-data">
           <input
             type="text"
             class="mail_text"
             placeholder="Furniture Name"
             name="name"
             id="name"
+            required
           />
           <textarea
             class="massage-bt"

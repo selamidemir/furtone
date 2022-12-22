@@ -14,3 +14,22 @@ exports.listFurnitures = async (req, res) => {
       furnitures
     });
 };
+
+exports.getFurniture = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const furniture = await Furniture.findById(id);
+    if (!furniture) {
+      throw new Error("Cant find the furniture.");
+    } else {
+      res.status(200).render("furniture", {
+        pageName: "furniture",
+        furniture,
+        title: furniture.name + " - Furtore"
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).redirect("/");
+  }
+}

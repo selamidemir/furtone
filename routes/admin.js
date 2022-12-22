@@ -25,6 +25,6 @@ router.post("/furnitures", authAdmin.adminCheck, adminController.addFurniture);
 router.put("/furnitures/:id", authAdmin.adminCheck, adminController.updateFurniture);
 
 /* delete the furniture */
-router.delete("/furnitures/:id", authAdmin.adminCheck, adminController.deleteFurniture);
+router.get("/furnitures/delete/:id", authAdmin.adminCheck, adminController.deleteFurniture);
 
 module.exports = router;

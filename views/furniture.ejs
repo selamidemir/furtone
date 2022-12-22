@@ -1,0 +1,26 @@
+<%- include("./partials/page_top.ejs") %>
+<%- include("./partials/page_header.ejs") %>
+      <!-- furnitures section start -->
+      <div class="furnitures_section layout_padding h-100 pb-5">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="furnitures_taital"><%= furniture.name %></h1>
+                  <div style="text-align: center;"><img class="furniture" src="/uploads/<%= furniture.photo %>" /></div>
+                  <p class="furnitures_text"><%= furniture.description %></p>
+               </div>
+            </div>
+            <div class="furnitures_section_2">
+               <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <a class="btn btn-success btn-lg mr-3" href="javascript: history.back()">Back</a>
+                    <% if (userIN) { %> 
+                        <a class="btn btn-danger btn-lg" onClick="return confirm('Are you sure?')" href="/admin/furnitures/delete/<%= furniture._id %>">Delete</a>
+                    <% } %>
+                    </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- furnitures section end -->
+<%- include("./partials/page_footer.ejs") %>

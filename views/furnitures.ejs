@@ -1,7 +1,7 @@
 <%- include("./partials/page_top.ejs") %>
 <%- include("./partials/page_header.ejs") %>
       <!-- furnitures section start -->
-      <div class="furnitures_section layout_padding">
+      <div class="furnitures_section layout_padding h-100 pb-5">
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
@@ -11,27 +11,15 @@
             </div>
             <div class="furnitures_section_2">
                <div class="row">
-                  <div class="col-md-4">
-                     <div class="hover01 column">
-                        <figure><img src="images/img-1.png"></figure>
+                  <% furnitures.forEach(furniture => { %>
+                     <div class="col-md-4">
+                        <div class="hover01 column">
+                           <figure><img class="furniture_image" src="/uploads/<%= furniture.photo %>"></figure>
+                        </div>
+                        <h3 class="introduction_text"><%= furniture.name %></h3>
+                        <div class="seemore_bt"><a href="/furnitures/<%= furniture._id %>">See More</a></div>
                      </div>
-                     <h3 class="introduction_text">Bedroom</h3>
-                     <div class="seemore_bt"><a href="#">See More</a></div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="hover01 column">
-                        <figure><img src="images/img-2.png"></figure>
-                     </div>
-                     <h3 class="introduction_text">Office</h3>
-                     <div class="seemore_bt active"><a href="#">See More</a></div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="hover01 column">
-                        <figure><img src="images/img-3.png"></figure>
-                     </div>
-                     <h3 class="introduction_text">Bathroom</h3>
-                     <div class="seemore_bt"><a href="#">See More</a></div>
-                  </div>
+                  <% }) %>
                </div>
             </div>
          </div>
