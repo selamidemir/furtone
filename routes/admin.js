@@ -1,13 +1,13 @@
 const express = require("express");
 const adminController = require("../controllers/admin");
-const authAdmin = require("../middlewares/authAdmin");
+const {adminCheck} = require("../middlewares/auth");
 const router = express.Router();
 
 /* get furnitures */
 router.get("/furnitures", adminController.listFurnitures);
 
 /* add a new furniture page */
-router.get("/furnitures/add", authAdmin.adminCheck, (req, res) => {
+router.get("/furnitures/add", adminCheck, (req, res) => {
   res
     .status(200)
     .render("admin/add_furniture", {
@@ -19,12 +19,12 @@ router.get("/furnitures/add", authAdmin.adminCheck, (req, res) => {
 });
 
 /* add a new furniture */
-router.post("/furnitures", authAdmin.adminCheck, adminController.addFurniture);
+router.post("/furnitures", adminCheck, adminController.addFurniture);
 
 /* update the furniture */
-router.put("/furnitures/:id", authAdmin.adminCheck, adminController.updateFurniture);
+router.put("/furnitures/:id", adminCheck, adminController.updateFurniture);
 
 /* delete the furniture */
-router.get("/furnitures/delete/:id", authAdmin.adminCheck, adminController.deleteFurniture);
+router.get("/furnitures/delete/:id", adminCheck, adminController.deleteFurniture);
 
 module.exports = router;

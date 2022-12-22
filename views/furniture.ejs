@@ -14,8 +14,14 @@
                <div class="row">
                     <div class="col d-flex justify-content-center">
                         <a class="btn btn-success btn-lg mr-3" href="javascript: history.back()">Back</a>
-                    <% if (userIN) { %> 
+                    <% if (userIN && admin) { %> 
                         <a class="btn btn-danger btn-lg" onClick="return confirm('Are you sure?')" href="/admin/furnitures/delete/<%= furniture._id %>">Delete</a>
+                    <% } else if (userIN && !admin) { %>
+                        <% if(like) { %> 
+                            <a class="btn btn-success btn-lg" href="/furnitures/unlike/<%= furniture._id %>">Unlike</a>
+                        <% } else { %>
+                            <a class="btn btn-success btn-lg" href="/furnitures/like/<%= furniture._id %>">Like</a>
+                        <% } %>
                     <% } %>
                     </div>
                </div>

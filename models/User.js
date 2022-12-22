@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const bcryp = require("bcrypt");
 const slugify = require("slugify");
 
-const {UserTypes} = require("../assets/userTypes");
+const { UserTypes } = require("../assets/userTypes");
+const Furniture = require("./Furniture");
 
 const Schema = mongoose.Schema;
 const UserSchema = Schema({
@@ -26,16 +27,17 @@ const UserSchema = Schema({
     require: true,
     trim: true,
   },
+  furnitures: [Furniture],
   userType: String,
   furnitures: [String],
 });
 
-UserSchema.pre("validate", async function  (next) {
+UserSchema.pre("validate", async function (next) {
   const user = this;
   /* Eğer ilk üye kayıt ediliyorsa
   bu üyeyi admin yap */
   const users = await User.findOne({});
-  console.log(users, UserTypes.user)
+  console.log(users, UserTypes.user);
   if (users) user.userType = UserTypes.user;
   else user.userType = UserTypes.admin;
 
