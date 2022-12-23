@@ -8,7 +8,13 @@ Anasayfa, Mobilyalar, İletişim ve Hakkında sayfaları mevcut. Ayrıca üye gi
 
 Ekran kayıtı aşağıdaki gibidir.
 
-![Furtore](ekran-kayiti.webm)
+![Anasayfa](anasayfa.png)
+
+![Mobilyalar](mobilyalar.png)
+
+![Mobilya Ekle](mobilya-ekle.png)
+
+![Mobilya Sile](mobilya-sil.png)
 
 ## Kurulum
 
