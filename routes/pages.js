@@ -8,9 +8,7 @@ const pagesController = require("../controllers/pages");
 const router = express.Router();
 
 /* set routers */
-router.get("/", function (req, res) {
-  res.render("index", { title: "Furtore Store Home" });
-});
+router.get("/", pagesController.getHome);
 
 router.get("/about", (re1, res) => {
   res
